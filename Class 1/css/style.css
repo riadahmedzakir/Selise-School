@@ -12,7 +12,96 @@ body {
     vertical-align: middle;
 }
 
-.Navigation{
-    height: 500px;
-    background-image: url("../assets/Image01.jpg");
+hr {
+    margin: 0;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.Navigation {
+    height: 300px;
+    /*background-color: #a6c7fc;*/
+    /*background-image: url("../assets/Image01.jpg");*/
+}
+
+.nav-menu {
+    height: 50px;
+    padding-top: 30px
+}
+
+.nav-menu>div {
+    display: inline-block;
+}
+
+.nav-menu.extra-margin {
+    margin-top: 50px;
+}
+
+ul#menu li {
+    padding-left: 20px;
+    display: inline;
+}
+
+.half-width {
+    width: 50%;
+}
+
+.display-inline {
+    display: inline-block;
+}
+
+.logo-container {
+    padding: 20px;
+}
+
+.nav-content {
+    align: right;
+}
+
+.client-info {
+    font-size: 50px;
+    padding-left: 100px;
+}
+
+.body-one-para {
+    text-align: center;
+    padding: 20px;
+}
+
+.info-box {
+    padding-left: 150px;
+    width: 300px;
+    height: 200px;
+    display: inline-block;
+}
+
+.info-box>div {
+    display: inline-block;
+}
+
+.sponsor-container {
+    padding-left: 100px;
+}
+
+.sponsor-logo>div {
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    display: inline-block;
+    width: 150px;
+}
+
+.body-three>div {
+    display: inline-block;
+    width: 33%;
+}
+
+.footer {
+    padding: 10px;
 }
