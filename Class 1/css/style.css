@@ -1,0 +1,18 @@
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 1024px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.Navigation{
+    height: 500px;
+    background-image: url("../assets/Image01.jpg");
+}
