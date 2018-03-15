@@ -5,25 +5,19 @@ html {
 body {
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
     font-size: 16;
-    color: #6c7a94;
+    color: #a4a1a8;
     margin: 0;
     padding: 0;
     border: 0;
     width: 100%;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
     color: #1db288;
 }
 
-h4,
-h5,
-h6 {
+h4, h5, h6 {
     font-size: 20px;
 }
 
@@ -43,9 +37,24 @@ a {
     color: #373c42;
 }
 
-li{
-	font-size: 20px;
+li {
+    font-size: 20px;
 }
+
+button {
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    width: 150px;
+    border-radius: 15px;
+    font-size: 20px;
+    color: #1db288;
+}
+
+button:hover {
+	background-color: #000000;
+}
+
 .background-grey {
     background-color: #52647a;
 }
@@ -55,7 +64,43 @@ li{
 }
 
 .Navigation {
-    height: 100px;
+    height: 80px;
+    position: sticky;
+    overflow: hidden;
+    top: 0;
+    z-index: 2;
+}
+
+.nav-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    padding-left: 25%;
+    display: inline-block;
+}
+
+.nav-menu>li {
+    color: #ffffff;
+    height: 100%;
+    width: 100px;
+    display: inline-block;
+    margin-left: -4px;
+    padding: 30px 5px 30px 30px;
+    border-style: dotted;
+    border-width: 0px 0.5px 0px 0px;
+    border-color: black;
+}
+
+.nav-menu>li:last-child {
+    border: 0px;
+}
+
+.nav-menu>li:hover {
+    background-color: #708bad;
+    color: #000000;
+    font-size: 21px;
+    box-shadow: 0 0 11px #0a0a0c;
 }
 
 .carousel-container {
@@ -64,21 +109,60 @@ li{
     background-size: 100% 500px;
     background-repeat: no-repeat;
     background-position: center;
-    filter:opacity(70%);
+}
+
+.carousel-elements {
+    padding-top: 15%;
+    position: relative;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 110%;
+    bottom: 0;
+    left: 45%;
+}
+
+.carousel-elements>h1, h2, h3 {
+    text-align: center;
 }
 
 .contributer-container {
-    height: 500px
+    height: 500px;
+}
+
+.contributer-container > h3 {
+	padding-top:30px;
+}
+
+.contributer-container > p {
+	text-align: center;
+}
+
+.contributer-container > hr {
+	border-width: 1px;
+	border-color: #79777c;
+	width: 70px;
+}
+
+.contributers-list {
+    padding-left: 20%;
+}
+
+.contributer-tile {
+	display: inline-block;
+	width: 250px;
+	height: 350px;
 }
 
 .newsfeed-container {
-	height: 400px;
+    height: 400px;
 }
 
 .contact-detail-container {
-	height: 600px
+    height: 600px;
 }
 
 .footer-container {
-	height: 40px;
+    height: 40px;
 }
