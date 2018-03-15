@@ -1,0 +1,84 @@
+html {
+    margin: auto;
+}
+
+body {
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    font-size: 16;
+    color: #6c7a94;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #1db288;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+a {
+    color: #373c42;
+}
+
+li{
+	font-size: 20px;
+}
+.background-grey {
+    background-color: #52647a;
+}
+
+.background-black {
+    background-color: #000000
+}
+
+.Navigation {
+    height: 100px;
+}
+
+.carousel-container {
+    height: 500px;
+    background-image: url(../assets/web-carousel.jpg);
+    background-size: 100% 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter:opacity(70%);
+}
+
+.contributer-container {
+    height: 500px
+}
+
+.newsfeed-container {
+	height: 400px;
+}
+
+.contact-detail-container {
+	height: 600px
+}
+
+.footer-container {
+	height: 40px;
+}
