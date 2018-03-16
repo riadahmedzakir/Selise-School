@@ -49,10 +49,13 @@ button {
     border-radius: 15px;
     font-size: 20px;
     color: #1db288;
+    border:none;
+    text-decoration: none;
 }
 
 button:hover {
 	background-color: #000000;
+    box-shadow: 0 0 11px #ffffff;
 }
 
 .background-grey {
@@ -142,17 +145,34 @@ button:hover {
 .contributer-container > hr {
 	border-width: 1px;
 	border-color: #79777c;
-	width: 70px;
+	width: 80%;
 }
 
 .contributers-list {
-    padding-left: 20%;
+    padding-left: 20%;    
 }
 
 .contributer-tile {
 	display: inline-block;
 	width: 250px;
-	height: 350px;
+    height: 300px;
+    padding-top: 50px;
+    margin-left: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.contributer-tile > img {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
+
+.contributer-tile > p {
+    text-align: center;
+    color: #ffffff;
 }
 
 .newsfeed-container {
