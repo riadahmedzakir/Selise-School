@@ -238,6 +238,108 @@ button:hover {
 
 .contact-detail-container {
     height: 600px;
+    position: relative;
+}
+
+.article-feed {
+    height: 100%;
+    width: 65%;
+    display: inline-block;
+}
+
+.article-feed > hr {
+    margin-top: 0;
+    margin-bottom: 0; 
+    width: 90%;
+    border-width: 1px;
+    border-color: #79777c;
+}
+
+.articles {
+    width: 100%;
+    height: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+.articles > img {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    width: 30%;
+    height: 85%;
+    border-radius: 15px;
+}
+
+.articles > h3 {
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: 300px;
+}
+
+.articles > h4 {
+    font-size: 16px;
+    display: inline-block;
+    position: absolute;
+    top: 45px;
+    left: 300px;
+}
+
+.articles > p {
+    text-align: justify;
+    display: inline-block;
+    position: absolute;
+    top: 100px;
+    left: 300px;
+}
+
+.articles > button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.articles > button:after {
+    content: '\00bb';
+}
+
+.contact-form {
+    height: 100%;
+    width: 30%;
+    display: inline-block;
+    position: relative;
+}
+
+.contact-form-header {
+    width: 100%;
+    height: 20%;
+    position: relative;
+}
+
+.contact-form-header {
+    display: inline-block;
+    position: absolute;
+}
+
+.contact-form-header > h4 {
+    display: inline-block;
+    position: absolute;
+    top: 30px;
+    left: 60px;
+}
+
+.contact-form-header > p {
+    margin: 0;
+    position: absolute;
+    top: 55px;
+    left: 60px;
+}
+
+.contact-form-inputs {
+    width: 100%;
+    height: 70%;
+    position: relative;
 }
 
 .footer-container {
