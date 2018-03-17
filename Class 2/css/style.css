@@ -261,6 +261,10 @@ textarea {
     left: 0;
 }
 
+.material-icons.md-20 { 
+    font-size: 20px; 
+}
+
 .material-icons.md-48 { 
     font-size: 48px; 
 }
@@ -377,4 +381,37 @@ textarea {
 
 .footer-container {
     height: 40px;
+    position: relative;
+}
+
+.footer-container > p {
+    margin: 0px;
+    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+}
+
+.media-01 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.media-02 {
+    position: absolute;
+    top: 10px;
+    left: 35px;
+}
+
+.media-03 {
+    position: absolute;
+    top: 10px;
+    left: 60px;
+}
+
+.media-04 {
+    position: absolute;
+    top: 10px;
+    left: 85px;
 }
