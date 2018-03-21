@@ -183,7 +183,7 @@ textarea {
 
 .contributer-tile {
 	display: inline-block;
-	width: 250px;
+	width: 25%;
     height: 300px;
     padding-top: 50px;
     margin-left: 15px;
@@ -308,7 +308,7 @@ textarea {
     display: inline-block;
     position: absolute;
     top: 15px;
-    left: 300px;
+    left: 35%;
 }
 
 .articles > h4 {
@@ -316,7 +316,7 @@ textarea {
     display: inline-block;
     position: absolute;
     top: 45px;
-    left: 300px;
+    left: 35%;
 }
 
 .articles > p {
@@ -324,7 +324,7 @@ textarea {
     display: inline-block;
     position: absolute;
     top: 100px;
-    left: 300px;
+    left: 35%;
 }
 
 .articles > button {
