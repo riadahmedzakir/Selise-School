@@ -69,6 +69,16 @@ input {
     background-color: #5b6e8e;
 }
 
+input:focus {
+    background-color: #6f85aa;
+}
+
+input:hover[type="submit"] {
+    background-color: #6f85aa;
+    box-shadow: 0 0 11px #ffffff;
+    font-size: 15px;
+}
+
 ::placeholder {
     color: #ffffff;
     opacity: 1; 
@@ -85,6 +95,10 @@ textarea {
     border-radius: 4px;
     background-color: #5b6e8e;
     resize: none;
+}
+
+textarea:focus {
+    background-color: #6f85aa;
 }
 
 .background-grey {
@@ -109,13 +123,13 @@ textarea {
     padding: 0;
     border: 0;
     padding-left: 25%;
-    display: inline-block;
+    display: block;
 }
 
 .nav-menu>li {
     color: #ffffff;
     height: 100%;
-    width: 100px;
+    width: 10%;
     display: inline-block;
     margin-left: -4px;
     padding: 30px 5px 30px 30px;
@@ -188,6 +202,12 @@ textarea {
     padding-top: 50px;
     margin-left: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.contributer-tile:hover {
+    background: #667a93;
+    width: 25.5%;
+    height: 305px;
 }
 
 .contributer-tile > img {
