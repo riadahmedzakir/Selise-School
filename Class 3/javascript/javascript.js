@@ -7,10 +7,14 @@
         constructor(myData) {
             this.createTable();
             this.createColumn(myData);
+            this.createRow();
             console.log(myData);
             //console.log(this.objectLength(myData));
             //console.log(Object.keys(myData).length);
-            // console.log(myData[Object.keys(myData)[2]]);
+            // console.log(myData[Object.keys(myData)[0]]);
+            // var object1 = Object.values(myData)[0];
+            // console.log(Object.values(object1));
+            // console.log(Object.keys(object1));
             // for (var x in myData) {
             //     console.log(myData[x].FIRST_NAME);
             //     console.log(myData[x].LAST_NAME);
@@ -53,14 +57,14 @@
             newThread.setAttribute("id", "myDataTableHeader");
             var myDataTable = document.getElementById("myDataTable");
             myDataTable.appendChild(newThread);
-           
-            var newTh = document.createElement("th");
             var myDataTableHeader = document.getElementById("myDataTableHeader");
-            for (var x in myData[0]) {
-                var textNode = document.createTextNode(x);
-                myDataTableHeader.appendChild('textNode');
-                myDataTable.appendChild('newTh');
-            }
+
+            for (var x in Object.values(myData)[0]) {
+                var newTh = document.createElement("th");
+                var textNode = document.createTextNode(x.toLowerCase());
+                newTh.appendChild(textNode);
+                myDataTableHeader.appendChild(newTh);
+            };
         }
 
         createRow() {

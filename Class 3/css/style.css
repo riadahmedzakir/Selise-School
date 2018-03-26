@@ -1,0 +1,12 @@
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-image: url(../assets/background.jpg);
+    background-size: 100%;
+}
+
+th {
+	width: 20%;
+	text-transform: capitalize;
+}

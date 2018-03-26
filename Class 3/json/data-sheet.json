@@ -1,8 +1,8 @@
 {
     "ROW_ONE":
     {
-        "FIRST_NAME": "John",
-        "LAST_NAME": "Doe",
+        "FIRST NAME": "John",
+        "LAST NAME": "Doe",
         "TITLE": "Administration Vice President",
         "MANAGER": "Steven King",
         "DEPARTMENT": "Executive",
@@ -10,8 +10,8 @@
     },
     "ROW_TWO":
     {
-        "FIRST_NAME": "Jane",
-        "LAST_NAME": "Doe",
+        "FIRST NAME": "Jane",
+        "LAST NAME": "Doe",
         "TITLE": "Programmer",
         "MANAGER": "Lex De Haan",
         "DEPARTMENT": "IT",
@@ -19,8 +19,8 @@
     },
     "ROW_THREE":
     {
-        "FIRST_NAME": "Hulond",
-        "LAST_NAME": "Doe",
+        "FIRST NAME": "Hulond",
+        "LAST NAME": "Doe",
         "TITLE": "Accountant",
         "MANAGER": "Nancy Greenberg",
         "DEPARTMENT": "Finance",
@@ -28,8 +28,8 @@
     },
     "ROW_FOUR":
     {
-        "FIRST_NAME": "Faviet",
-        "LAST_NAME": "Doe",
+        "FIRST NAME": "Faviet",
+        "LAST NAME": "Doe",
         "TITLE": "Finance Manager",
         "MANAGER": "Alexander Hulond",
         "DEPARTMENT": "Finance",
