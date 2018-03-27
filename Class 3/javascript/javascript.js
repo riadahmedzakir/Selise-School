@@ -7,8 +7,8 @@
         constructor(myData) {
             this.createTable();
             this.createColumn(myData);
-            this.createRow();
-            console.log(myData);
+            this.createRow(myData);
+            // console.log(myData);
             //console.log(this.objectLength(myData));
             //console.log(Object.keys(myData).length);
             // console.log(myData[Object.keys(myData)[0]]);
@@ -43,8 +43,8 @@
             var newtable = document.createElement("table");
             newtable.classList.add('table');
             newtable.classList.add('table-striped');
-            newtable.classList.add('table-dark');
             newtable.classList.add('table-hover');
+            newtable.classList.add('table-dark');            
             newtable.classList.add('table-bordered');
             newtable.setAttribute("id", "myDataTable");
             var element = document.getElementById("tableContainer");
@@ -53,7 +53,7 @@
 
         createColumn(myData) {
             //columnCount = Object.keys(myData).length;
-            var newThread = document.createElement("Thread");
+            var newThread = document.createElement("tr");
             newThread.setAttribute("id", "myDataTableHeader");
             var myDataTable = document.getElementById("myDataTable");
             myDataTable.appendChild(newThread);
@@ -67,8 +67,22 @@
             };
         }
 
-        createRow() {
+        createRow(myData) {
+            var rowCount = this.objectLength(myData);
+            for (var x = 0; x < rowCount; x++) {
+                var newRow = document.createElement("tr");
+                newRow.setAttribute("id", "myDataRow" + x);
+                var myDataTable = document.getElementById("myDataTable");
+                myDataTable.appendChild(newRow);
+                var myDataRow = document.getElementById("myDataRow" + x);
 
+                for (var y in Object.values(myData)[x]) {
+                    var newTd = document.createElement("td");
+                    var textNode = document.createTextNode(Object.values(myData)[x][y]);
+                    newTd.appendChild(textNode);
+                    myDataRow.appendChild(newTd);
+                };
+            }
         }
     }
 
