@@ -10,3 +10,7 @@ th , td{
 	width: 15%;
 	text-transform: capitalize;
 }
+
+.container-fluid {
+	padding-top: 5%;
+}

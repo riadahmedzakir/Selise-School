@@ -44,9 +44,10 @@
             newtable.classList.add('table');
             newtable.classList.add('table-striped');
             newtable.classList.add('table-hover');
-            newtable.classList.add('table-dark');            
+            newtable.classList.add('table-dark');
             newtable.classList.add('table-bordered');
             newtable.setAttribute("id", "myDataTable");
+            newtable.setAttribute("value", "dark");
             var element = document.getElementById("tableContainer");
             element.appendChild(newtable);
         }
@@ -69,11 +70,16 @@
 
         createRow(myData) {
             var rowCount = this.objectLength(myData);
+            var newTablebody = document.createElement('tbody');
+            newTablebody.setAttribute("id", "myTableBody");
+            var myDataTable = document.getElementById('myDataTable');
+            myDataTable.appendChild(newTablebody);
+
             for (var x = 0; x < rowCount; x++) {
                 var newRow = document.createElement("tr");
                 newRow.setAttribute("id", "myDataRow" + x);
-                var myDataTable = document.getElementById("myDataTable");
-                myDataTable.appendChild(newRow);
+                var myTableBody = document.getElementById("myTableBody");
+                myTableBody.appendChild(newRow);
                 var myDataRow = document.getElementById("myDataRow" + x);
 
                 for (var y in Object.values(myData)[x]) {
@@ -84,6 +90,30 @@
                 };
             }
         }
+    }
+
+    function changeTheme() {
+        var element = document.getElementById('toggleTheme');
+
+        element.addEventListener("click", function() {
+            var myDataTable = document.getElementById('myDataTable');
+
+            if (myDataTable.getAttribute("value") === 'dark') {
+                myDataTable.classList.remove('table-dark');
+                myDataTable.classList.add('table-info');
+
+                element.classList.remove('btn-dark');
+                element.classList.add('btn-info');
+                myDataTable.setAttribute("value", "light");
+            } else if (myDataTable.getAttribute("value") === 'light') {
+                myDataTable.classList.remove('table-info');
+                myDataTable.classList.add('table-dark');
+
+                element.classList.remove('btn-info');
+                element.classList.add('btn-dark');
+                myDataTable.setAttribute("value", "dark");
+            }
+        })
     }
 
     function loadJSON(callback) {
@@ -102,4 +132,10 @@
         var myData = JSON.parse(response);
         var myTable = new table(myData);
     });
+
+    function init() {
+        changeTheme();
+    }
+
+    init();
 })(window);
