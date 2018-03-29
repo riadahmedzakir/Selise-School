@@ -5,9 +5,7 @@
 
     class table {
         constructor(myData) {
-            this.createTable();
-            this.createColumn(myData);
-            this.createRow(myData);
+            this.createTable(myData);
             // console.log(myData);
             //console.log(this.objectLength(myData));
             //console.log(Object.keys(myData).length);
@@ -39,7 +37,7 @@
             return count;
         };
 
-        createTable() {
+        createTable(myData) {
             var newtable = document.createElement("table");
             newtable.classList.add('table');
             newtable.classList.add('table-striped');
@@ -50,6 +48,8 @@
             newtable.setAttribute("value", "dark");
             var element = document.getElementById("tableContainer");
             element.appendChild(newtable);
+
+            this.createColumn(myData);
         }
 
         createColumn(myData) {
@@ -66,6 +66,8 @@
                 newTh.appendChild(textNode);
                 myDataTableHeader.appendChild(newTh);
             };
+
+            this.createRow(myData);
         }
 
         createRow(myData) {
@@ -83,7 +85,7 @@
                 var myDataRow = document.getElementById("myDataRow" + x);
 
                 for (var y in Object.values(myData)[x]) {
-                    var newTd = document.createElement("td");
+                    var newTd = document.createElement("td");                    
                     var textNode = document.createTextNode(Object.values(myData)[x][y]);
                     newTd.appendChild(textNode);
                     myDataRow.appendChild(newTd);
