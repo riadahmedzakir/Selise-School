@@ -76,16 +76,35 @@
                 for (var y in Object.values(myData)[x]) {
                     var newTd = document.createElement("td");
                     newTd.setAttribute("id", y + x);
-                    newTd.setAttribute("contenteditable" , "false");
-                    newTd.addEventListener("dblclick" , function() {
-
-                    });                  
+                    newTd.setAttribute("contenteditable", "false");
+                    newTd.addEventListener("dblclick", function() {
+                        makeEditable(this.id);
+                    });
+                    newTd.addEventListener("focusout", function() {
+                        makeNonEditable(this.id);
+                    });
+                    newTd.addEventListener("keypress", function(event) {
+                        console.log(event);
+                        if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+                            makeNonEditable(this.id);
+                        }
+                    });
                     var textNode = document.createTextNode(Object.values(myData)[x][y]);
                     newTd.appendChild(textNode);
                     myDataRow.appendChild(newTd);
                 };
             }
         }
+    }
+
+    function makeEditable(idValue) {
+        var element = document.getElementById(idValue);
+        element.setAttribute("contenteditable", "true");
+    }
+
+    function makeNonEditable(idValue) {
+        var element = document.getElementById(idValue);
+        element.setAttribute("contenteditable", "false");
     }
 
     function changeTheme() {
@@ -112,7 +131,7 @@
         })
     }
 
-    function setJsonOnLocalStorage(myJsonString) {        
+    function setJsonOnLocalStorage(myJsonString) {
         localStorage.setItem("myJsonString", myJsonString);
     }
 
