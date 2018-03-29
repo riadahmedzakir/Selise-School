@@ -1,0 +1,20 @@
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-image: url(../assets/background.jpg);
+    background-size: 100%;
+}
+
+table {
+	box-shadow: 0 0 11px #ffffff;
+}
+
+th , td{
+	width: 15%;
+	text-transform: capitalize;
+}
+
+.container-fluid {
+	padding-top: 5%;
+}
