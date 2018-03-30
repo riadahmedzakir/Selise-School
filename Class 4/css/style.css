@@ -1,20 +1,35 @@
 body {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	background-image: url(../assets/background.jpg);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-image: url(../assets/background.jpg);
     background-size: 100%;
 }
 
 table {
-	box-shadow: 0 0 11px #ffffff;
+    box-shadow: 0 0 11px #ffffff;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-th , td{
-	width: 15%;
-	text-transform: capitalize;
+th,
+td {
+    width: 15%;
+    text-transform: capitalize;
 }
 
+input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+::placeholder {
+    font-style: italic;
+}
 .container-fluid {
-	padding-top: 5%;
+    padding-top: 5%;
+}
+
+.editable-effect {
+    background-color: #822424;
 }
