@@ -113,7 +113,9 @@
     function personEventListner() {
         var element = document.getElementById('addPerson');
         element.addEventListener("click", function() {
-            addPersonForm();
+            if (this.value === 'isClickable') {
+                addPersonForm();
+            }
         });
     }
 
@@ -141,11 +143,15 @@
         var textNode = document.createTextNode("Save");
         personInputSave.appendChild(textNode);
         personInputTable.appendChild(personInputSave);
+        var element = document.getElementById('addPerson');
+        element.setAttribute("value", "isNotClickable");
     }
 
     function savePerson() {
         var element = document.getElementById('newPersonInfo');
         element.innerHTML = '';
+        var element = document.getElementById('addPerson');
+        element.setAttribute("value", "isClickable");
     }
 
     function changeTheme() {
