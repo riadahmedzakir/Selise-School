@@ -148,10 +148,19 @@
     }
 
     function savePerson() {
+        var randomKeyValue = randomKeyGenarator();
+
+        var newJson = '';
+        console.log(randomKeyValue);
         var element = document.getElementById('newPersonInfo');
         element.innerHTML = '';
         var element = document.getElementById('addPerson');
         element.setAttribute("value", "isClickable");
+    }
+
+    function randomKeyGenarator() {
+        var value = (Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8)).toUpperCase();
+        return value;
     }
 
     function changeTheme() {
