@@ -149,18 +149,45 @@
 
     function savePerson() {
         var randomKeyValue = randomKeyGenarator();
+        var regex = /(}$)/g;
+        var oldPersonString = (JSON.stringify(loadJsonFromLocalStorage())).trim();
 
-        var newJson = '';
-        console.log(randomKeyValue);
+        var firstName = document.getElementsByTagName("input")[0].value;
+        var lastName = document.getElementsByTagName("input")[1].value;
+        var title = document.getElementsByTagName("input")[2].value;
+        var manager = document.getElementsByTagName("input")[3].value;
+        var department = document.getElementsByTagName("input")[4].value;
+        var salary = document.getElementsByTagName("input")[5].value;
+
+        var newTemporaryPersonString = ',"' + randomKeyValue + '":{"FIRST NAME":"' + firstName + '",' + '"LAST NAME":"' + lastName + '",' + '"TTILE":"' + title + '",' + '"MANAGER":"' + manager + '",' + '"DEPARTMENT":"' + department + '",' + '"SALARY":"' + salary + '"}}';
+        var newPersonString = oldPersonString.replace(regex, newTemporaryPersonString);
+
+        setJsonOnLocalStorage(newPersonString);
+
         var element = document.getElementById('newPersonInfo');
         element.innerHTML = '';
         var element = document.getElementById('addPerson');
         element.setAttribute("value", "isClickable");
+
+        var myDataTable = document.getElementById('tableContainer');
+        myDataTable.innerHTML = "";
+        var myTable = new Table(loadJsonFromLocalStorage());
     }
 
     function randomKeyGenarator() {
         var value = (Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8)).toUpperCase();
         return value;
+    }
+
+    function myInputValidator() {
+        var firstName = document.getElementsByTagName("input")[0].value;
+        var lastName = document.getElementsByTagName("input")[1].value;
+        var title = document.getElementsByTagName("input")[2].value;
+        var manager = document.getElementsByTagName("input")[3].value;
+        var department = document.getElementsByTagName("input")[4].value;
+        var salary = document.getElementsByTagName("input")[5].value;
+
+        
     }
 
     function changeTheme() {
@@ -198,10 +225,16 @@
     }
 
     function init() {
-        setJsonOnLocalStorage('{ "ROW_ONE": { "FIRST NAME": "John", "LAST NAME": "Doe", "TITLE": "Administration Vice President", "MANAGER": "Steven King", "DEPARTMENT": "Executive", "SALARY": "17000" }, "ROW_TWO": { "FIRST NAME": "Jane", "LAST NAME": "Doe", "TITLE": "Programmer", "MANAGER": "Lex De Haan", "DEPARTMENT": "IT", "SALARY": "9000" }, "ROW_THREE": { "FIRST NAME": "Hulond", "LAST NAME": "Doe", "TITLE": "Accountant", "MANAGER": "Nancy Greenberg", "DEPARTMENT": "Finance", "SALARY": "8000" }, "ROW_FOUR": { "FIRST NAME": "Faviet", "LAST NAME": "Doe", "TITLE": "Finance Manager", "MANAGER": "Alexander Hulond", "DEPARTMENT": "Finance", "SALARY": "12000" } }');
-        var myTable = new Table(loadJsonFromLocalStorage());
-        changeTheme();
-        personEventListner();
+        if (localStorage.getItem("myJsonString") === null) {
+            setJsonOnLocalStorage('{ "ROW_ONE": { "FIRST NAME": "John", "LAST NAME": "Doe", "TITLE": "Administration Vice President", "MANAGER": "Steven King", "DEPARTMENT": "Executive", "SALARY": "17000" }, "ROW_TWO": { "FIRST NAME": "Jane", "LAST NAME": "Doe", "TITLE": "Programmer", "MANAGER": "Lex De Haan", "DEPARTMENT": "IT", "SALARY": "9000" }, "ROW_THREE": { "FIRST NAME": "Hulond", "LAST NAME": "Doe", "TITLE": "Accountant", "MANAGER": "Nancy Greenberg", "DEPARTMENT": "Finance", "SALARY": "8000" }, "ROW_FOUR": { "FIRST NAME": "Faviet", "LAST NAME": "Doe", "TITLE": "Finance Manager", "MANAGER": "Alexander Hulond", "DEPARTMENT": "Finance", "SALARY": "12000" } }');
+            var myTable = new Table(loadJsonFromLocalStorage());
+            changeTheme();
+            personEventListner();
+        } else {
+            var myTable = new Table(loadJsonFromLocalStorage());
+            changeTheme();
+            personEventListner();
+        }
     }
 
     init();
