@@ -26,10 +26,15 @@ input {
 ::placeholder {
     font-style: italic;
 }
+
 .container-fluid {
     padding-top: 5%;
 }
 
 .editable-effect {
     background-color: #822424;
+}
+
+.error-msg {
+    color: #fff9fb;
 }
