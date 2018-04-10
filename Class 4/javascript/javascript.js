@@ -108,6 +108,14 @@
         var element = document.getElementById(idValue);
         element.setAttribute("contenteditable", "false");
         element.classList.remove('editable-effect');
+        var objectValue = element.innerHTML;
+        var objectIndex = parseInt(idValue.match(/(\d$)/g));
+        var objectKey = ((idValue.match(/[^(\d$)]/g)).toString()).replace(/\,/g, "");    
+        if (objectKey === 'FIRST NAME') {
+            updatePersonFirstName(objectIndex, objectKey, objectValue);
+        } else if (objectKey === 'LAST NAME') {
+            updatePersonLastName(objectIndex, objectKey, objectValue);
+        }
     }
 
     function personEventListner() {
@@ -204,6 +212,20 @@
         var myDataTable = document.getElementById('tableContainer');
         myDataTable.innerHTML = "";
         var myTable = new Table(loadJsonFromLocalStorage());
+    }
+
+    function updatePersonFirstName(objectIndex, objectKey, objectValue) {
+        var myData = loadJsonFromLocalStorage();
+        var objectIndexName = Object.keys(myData)[objectIndex];
+        myData[objectIndexName][objectKey] = objectValue;
+        setJsonOnLocalStorage(JSON.stringify(myData));
+    }
+
+    function updatePersonLastName(objectIndex, objectKey, objectValue) {
+        var myData = loadJsonFromLocalStorage();
+        var objectIndexName = Object.keys(myData)[objectIndex];
+        myData[objectIndexName][objectKey] = objectValue;
+        setJsonOnLocalStorage(JSON.stringify(myData));
     }
 
     function randomKeyGenarator() {
