@@ -1,0 +1,65 @@
+body {
+    background-image: url("../assets/bg-img.jpg");
+    background-color: rgb(37, 38, 37);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 200px;
+    max-height: 900px;
+}
+
+.search-nav {
+    height: 150px;
+    overflow: hidden;
+    top: 0;
+    z-index: 2;
+}
+
+.heading {
+    height: 60px;
+    width: 400px;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sub-container {
+    width: 400px;
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+}
+
+.input-group {
+    padding-top: 10px;
+}
+
+.sub-container-toDoList {
+    height: 80px;
+    width: 400px;
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 20px;
+}
+
+.btn-style {
+    width: 90px;
+    height: 40px;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+#inputContainer {
+    height: 500px;
+    overflow: auto;
+}
+
+#inputContainer::-webkit-scrollbar {
+    display: none; // Safari and Chrome
+}
+
+.alert {
+    margin-bottom: 5px;
+}
