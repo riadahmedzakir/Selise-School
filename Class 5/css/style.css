@@ -7,6 +7,12 @@ body {
     max-height: 900px;
 }
 
+sup {
+    font-size: 12px;
+    font-style: italic;
+    color: #d11b4b;
+}
+
 .search-nav {
     height: 150px;
     overflow: hidden;
@@ -31,7 +37,13 @@ body {
 }
 
 .input-group {
-    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.error-message {
+    font-size: 12px;
+    font-style: italic;
+    color: #b70b2d;
 }
 
 .sub-container-toDoList {
@@ -62,4 +74,16 @@ body {
 
 .alert {
     margin-bottom: 5px;
+}
+
+.task-card {
+    height: 260px;
+}
+
+.task-card>p:first-child {
+    height: 48px;
+}
+
+.task-card>h2 {
+    border-bottom: 2px solid black;
 }
