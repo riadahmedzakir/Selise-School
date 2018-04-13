@@ -108,6 +108,14 @@
         var element = document.getElementById(idValue);
         element.setAttribute("contenteditable", "false");
         element.classList.remove('editable-effect');
+        var objectValue = element.innerHTML;
+        var objectIndex = parseInt(idValue.match(/(\d$)/g));
+        var objectKey = ((idValue.match(/[^(\d$)]/g)).toString()).replace(/\,/g, "");    
+        if (objectKey === 'FIRST NAME') {
+            updatePersonFirstName(objectIndex, objectKey, objectValue);
+        } else if (objectKey === 'LAST NAME') {
+            updatePersonLastName(objectIndex, objectKey, objectValue);
+        }
     }
 
     function personEventListner() {
@@ -128,6 +136,38 @@
             newInput.setAttribute("name", x);
             newInput.setAttribute("placeholder", x.toLowerCase() + " ...........");
             personInputTable.appendChild(newInput);
+
+            if (x === 'FIRST NAME') {
+                var newSpan = document.createElement("span");
+                newSpan.classList.add("error-msg");
+                newSpan.setAttribute("id", "firstNameErr");
+                personInputTable.appendChild(newSpan);
+            } else if (x === 'LAST NAME') {
+                var newSpan = document.createElement("span");
+                newSpan.classList.add("error-msg");
+                newSpan.setAttribute("id", "lastNameErr");
+                personInputTable.appendChild(newSpan);
+            } else if (x === 'TITLE') {
+                var newSpan = document.createElement("span");
+                newSpan.classList.add("error-msg");
+                newSpan.setAttribute("id", "titleErr");
+                personInputTable.appendChild(newSpan);
+            } else if (x === 'MANAGER') {
+                var newSpan = document.createElement("span");
+                newSpan.classList.add("error-msg");
+                newSpan.setAttribute("id", "managerErr");
+                personInputTable.appendChild(newSpan);
+            } else if (x === 'DEPARTMENT') {
+                var newSpan = document.createElement("span");
+                newSpan.classList.add("error-msg");
+                newSpan.setAttribute("id", "departmentErr");
+                personInputTable.appendChild(newSpan);
+            } else if (x === 'SALARY') {
+                var newSpan = document.createElement("span");
+                newSpan.classList.add("error-msg");
+                newSpan.setAttribute("id", "salaryErr");
+                personInputTable.appendChild(newSpan);
+            }
         };
 
         var personInputSave = document.createElement("button");
@@ -138,7 +178,7 @@
         personInputSave.classList.add("btn-lg");
         personInputSave.classList.add("btn-block");
         personInputSave.addEventListener("click", function() {
-            savePerson();
+            myInputValidator();
         });
         var textNode = document.createTextNode("Save");
         personInputSave.appendChild(textNode);
@@ -174,12 +214,27 @@
         var myTable = new Table(loadJsonFromLocalStorage());
     }
 
+    function updatePersonFirstName(objectIndex, objectKey, objectValue) {
+        var myData = loadJsonFromLocalStorage();
+        var objectIndexName = Object.keys(myData)[objectIndex];
+        myData[objectIndexName][objectKey] = objectValue;
+        setJsonOnLocalStorage(JSON.stringify(myData));
+    }
+
+    function updatePersonLastName(objectIndex, objectKey, objectValue) {
+        var myData = loadJsonFromLocalStorage();
+        var objectIndexName = Object.keys(myData)[objectIndex];
+        myData[objectIndexName][objectKey] = objectValue;
+        setJsonOnLocalStorage(JSON.stringify(myData));
+    }
+
     function randomKeyGenarator() {
         var value = (Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 8)).toUpperCase();
         return value;
     }
 
     function myInputValidator() {
+        var firstNameErr, lastNameErr, titleErr, managerErr, departmentErr, salaryErr = "";
         var firstName = document.getElementsByTagName("input")[0].value;
         var lastName = document.getElementsByTagName("input")[1].value;
         var title = document.getElementsByTagName("input")[2].value;
@@ -187,7 +242,58 @@
         var department = document.getElementsByTagName("input")[4].value;
         var salary = document.getElementsByTagName("input")[5].value;
 
-        
+        if (firstName === null || firstName === "") {
+            firstNameErr = "* First name is required";
+            document.getElementById("firstNameErr").innerHTML = firstNameErr;
+        } else {
+            firstNameErr = "";
+            document.getElementById("firstNameErr").innerHTML = firstNameErr;
+        }
+
+        if (lastName === null || lastName === "") {
+            lastNameErr = "* Last name is required";
+            document.getElementById("lastNameErr").innerHTML = lastNameErr;
+        } else {
+            lastNameErr = "";
+            document.getElementById("lastNameErr").innerHTML = lastNameErr;
+        }
+
+        if (title === null || title === "") {
+            titleErr = "Title is required";
+            document.getElementById("titleErr").innerHTML = titleErr;
+        } else {
+            titleErr = "";
+            document.getElementById("titleErr").innerHTML = titleErr;
+        }
+
+        if (manager === null || manager === "") {
+            managerErr = "Manager is required";
+            document.getElementById("managerErr").innerHTML = managerErr;
+        } else {
+            managerErr = "";
+            document.getElementById("managerErr").innerHTML = managerErr;
+        }
+
+        if (department === null || department === "") {
+            departmentErr = "Department is required";
+            document.getElementById("departmentErr").innerHTML = departmentErr;
+        } else {
+            departmentErr = "";
+            document.getElementById("departmentErr").innerHTML = departmentErr;
+        }
+        if (salary === null || salary === "" || isNaN(salary)) {
+            salaryErr = "Salary is required/invalid";
+            document.getElementById("salaryErr").innerHTML = salaryErr;
+        } else {
+            salaryErr = "";
+            document.getElementById("salaryErr").innerHTML = salaryErr;
+        }
+
+        if (firstNameErr === "" && lastNameErr === "" && titleErr === "" && departmentErr === "" && salaryErr === "") {
+            savePerson();
+        } else {
+
+        }
     }
 
     function changeTheme() {
