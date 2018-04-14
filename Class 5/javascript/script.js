@@ -5,7 +5,7 @@
 
        //Storage Getter & Setter Functions 
        function setJsonOnLocalStorage(taskList) {
-           localStorage.setItem("taskList", taskList);
+           localStorage.setItem("taskList", JSON.stringify(taskList));
        }
 
        function loadJsonFromLocalStorage() {
@@ -14,6 +14,15 @@
            return dataSet;
        }
 
+       // GuID Genarator
+       function guIdGenarator() {
+           function s4() {
+               return Math.floor((1 + Math.random()) * 0x10000)
+                   .toString(16)
+                   .substring(1);
+           }
+           return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+       }
        //Event Listner Initialize
        function initializeEventListners() {
            var addTask = document.getElementById('addTask');
@@ -89,6 +98,42 @@
            } else {
                taskStatusErr = "";
                document.getElementById("taskStatusErr").innerHTML = taskStatusErr;
+           }
+
+
+           if (taskNameErr === "" && taskDetailErr === "" && taskDateErr === "" && taskStatusErr === "" && taskPriorityErr === "") {
+               addTask(taskName, taskDetail, taskDate, taskPriority, taskStatus, guIdGenarator());
+           }
+       }
+
+       function addTask(taskName, taskDetail, taskDate, taskPriority, taskStatus, guId) {
+           if (loadJsonFromLocalStorage() === null) {
+               var newTask = {
+                   "taskName": taskName,
+                   "taskDetail": taskDetail,
+                   "taskDate": taskDate,
+                   "taskPriority": taskPriority,
+                   "taskStatus": taskStatus,
+                   "guId": guId
+               }
+
+               var newTaskList = [];
+               newTaskList.push(newTask);
+               console.log(newTaskList);
+               setJsonOnLocalStorage(newTaskList);
+           } else {
+               var newTask = {
+                   "taskName": taskName,
+                   "taskDetail": taskDetail,
+                   "taskDate": taskDate,
+                   "taskPriority": taskPriority,
+                   "taskStatus": taskStatus,
+                   "guId": guId
+               }
+
+               var oldTask = loadJsonFromLocalStorage();
+               oldTask.push(newTask);
+               setJsonOnLocalStorage(oldTask);
            }
        }
 
