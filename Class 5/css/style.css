@@ -87,3 +87,14 @@ sup {
 .task-card>h2 {
     border-bottom: 2px solid black;
 }
+
+.task-card>h2>sup {
+    position: absolute;
+    top: 37px;
+    right: 35px;
+}
+
+.material-icons {
+    font-size: 36px;
+    color: #ffe100;
+}
