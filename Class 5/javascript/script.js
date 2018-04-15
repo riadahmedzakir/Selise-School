@@ -33,26 +33,32 @@
        //Filter functions
        function filterByToDo() {
            var taskList = loadJsonFromLocalStorage();
-           var filteredList = _.filter(taskList, function(user) {
-               return user.taskStatus === "OnQueue" || user.taskStatus === "InProgress";
+           var filteredList = _.filter(taskList, function(task) {
+               return task.taskStatus === "OnQueue" || task.taskStatus === "InProgress";
            });
            return filteredList;
        }
 
        function filterByCompleted() {
            var taskList = loadJsonFromLocalStorage();
-           var filteredList = _.filter(taskList, function(user) {
-               return user.taskStatus === "Completed";
+           var filteredList = _.filter(taskList, function(task) {
+               return task.taskStatus === "Completed";
            });
            return filteredList;
        }
 
-       function searchtask(value) {
+       function searchTask(value) {
            var taskList = loadJsonFromLocalStorage();
-           var filteredList = _.filter(taskList, function(user) {
-               return (user.taskName).toUpperCase() === value || (user.taskPriority).toUpperCase() === value || (user.taskDetail).toUpperCase().match(value);
+           var filteredList = _.filter(taskList, function(task) {
+               return (task.taskName).toUpperCase() === value || (task.taskPriority).toUpperCase() === value || (task.taskDetail).toUpperCase().match(value);
            });
            return filteredList;
+       }
+
+       function sortByDate() {
+            var taskList = loadJsonFromLocalStorage();
+            var filteredList = _.sortBy(taskList, "taskDate");
+            console.log(filteredList);
        }
 
        //Event Listner Initialize
@@ -88,7 +94,7 @@
 
            searhTaskInput.addEventListener("keypress", function(event) {
                if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-                   var taskList = searchtask((this.value).toUpperCase());
+                   var taskList = searchTask((this.value).toUpperCase());
                    document.getElementById("inputContainer").innerHTML = null;
                    taskList.forEach(toDoList);
                }
@@ -336,7 +342,7 @@
        //Init Function
        function init() {
            initializeEventListners();
-
+           sortByDate();
            if (loadJsonFromLocalStorage() !== null) {
                var taskList = loadJsonFromLocalStorage();
                taskList.forEach(toDoList);

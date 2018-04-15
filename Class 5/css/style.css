@@ -98,3 +98,10 @@ sup {
     font-size: 36px;
     color: #ffe100;
 }
+
+.transparent-input {
+    background-color: transparent;
+    padding-left: 10px;
+    border: none;
+    color: #17a2b8;
+}
