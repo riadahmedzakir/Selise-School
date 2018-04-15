@@ -30,6 +30,31 @@
            return index;
        }
 
+       //Filter functions
+       function filterByToDo() {
+           var taskList = loadJsonFromLocalStorage();
+           var filteredList = _.filter(taskList, function(user) {
+               return user.taskStatus === "OnQueue" || user.taskStatus === "InProgress";
+           });
+           return filteredList;
+       }
+
+       function filterByCompleted() {
+           var taskList = loadJsonFromLocalStorage();
+           var filteredList = _.filter(taskList, function(user) {
+               return user.taskStatus === "Completed";
+           });
+           return filteredList;
+       }
+
+       function searchtask(value) {
+           var taskList = loadJsonFromLocalStorage();
+           var filteredList = _.filter(taskList, function(user) {
+               return (user.taskName).toUpperCase() === value || (user.taskPriority).toUpperCase() === value || (user.taskDetail).toUpperCase().match(value);
+           });
+           return filteredList;
+       }
+
        //Event Listner Initialize
        function initializeEventListners() {
            var addTask = document.getElementById('addTask');
@@ -44,13 +69,30 @@
                formValidator();
            });
 
-           filterAll.addEventListener("click", function() {})
+           filterAll.addEventListener("click", function() {
+               document.getElementById("inputContainer").innerHTML = null;
+               loadJsonFromLocalStorage().forEach(toDoList);
+           })
 
-           filterToDo.addEventListener("click", function() {})
+           filterToDo.addEventListener("click", function() {
+               document.getElementById("inputContainer").innerHTML = null;
+               var taskList = filterByToDo();
+               taskList.forEach(toDoList);
+           })
 
-           filterComplete.addEventListener("click", function() {})
+           filterComplete.addEventListener("click", function() {
+               document.getElementById("inputContainer").innerHTML = null;
+               var taskList = filterByCompleted();
+               taskList.forEach(toDoList);
+           })
 
-           searhTaskInput.addEventListener("click", function() {})
+           searhTaskInput.addEventListener("keypress", function(event) {
+               if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+                   var taskList = searchtask((this.value).toUpperCase());
+                   document.getElementById("inputContainer").innerHTML = null;
+                   taskList.forEach(toDoList);
+               }
+           })
        }
 
        //Form validator
@@ -183,6 +225,7 @@
 
                //Task details
                var newTaskDetails = document.createElement('p');
+               newTaskDetails.classList.add("task-detail-container")
                newDiv.appendChild(newTaskDetails);
                var newTaskDetailsText = document.createTextNode(task["taskDetail"]);
                newTaskDetails.appendChild(newTaskDetailsText);
@@ -249,7 +292,6 @@
        function editTask(taskId) {
            var taskNumber = findTaskByGuId(taskId);
            var taskList = loadJsonFromLocalStorage();
-           console.log(taskList[taskNumber]["taskName"]);
 
            var editTaskName = document.getElementById('editTaskName');
            editTaskName.value = taskList[taskNumber]["taskName"];
@@ -265,11 +307,30 @@
 
            var editTaskStatus = document.getElementById('editTaskStatus');
            editTaskStatus.value = taskList[taskNumber]["taskStatus"];
+
+           var saveTask = document.getElementById("saveTask");
+           saveTask.addEventListener("click", function() {
+               taskList[taskNumber]["taskName"] = document.getElementById("editTaskName").value;;
+               taskList[taskNumber]["taskDetail"] = document.getElementById("editTaskDetails").value;
+               taskList[taskNumber]["taskDate"] = document.getElementById("editTaskDate").value;
+               taskList[taskNumber]["taskPriority"] = document.getElementById("editTaskPriority").value;
+               taskList[taskNumber]["taskStatus"] = document.getElementById("editTaskStatus").value;
+               setJsonOnLocalStorage(taskList);
+               document.getElementById("inputContainer").innerHTML = null;
+               taskList.forEach(toDoList);
+           });
        }
 
        function deleteTask(taskId) {
            var taskNumber = findTaskByGuId(taskId);
-           console.log(taskNumber);
+           var confirmTaskDelete = document.getElementById('confirmTaskDelete');
+           var taskList = loadJsonFromLocalStorage();
+           confirmTaskDelete.addEventListener("click", function() {
+               taskList.splice(taskNumber, 1);
+               setJsonOnLocalStorage(taskList);
+               document.getElementById("inputContainer").innerHTML = null;
+               taskList.forEach(toDoList);
+           });
        }
 
        //Init Function
@@ -280,7 +341,6 @@
                var taskList = loadJsonFromLocalStorage();
                taskList.forEach(toDoList);
            }
-
        }
 
        init();

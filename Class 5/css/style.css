@@ -80,7 +80,7 @@ sup {
     height: 260px;
 }
 
-.task-card>p:first-child {
+.task-detail-container {
     height: 48px;
 }
 

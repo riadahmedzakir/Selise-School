@@ -27,7 +27,7 @@
                     <div class="col-md-8 align-self-center alert alert-info heading">Add New Task</div>
                     <div id="taskInputContainer" class="col-md-8 align-self-center alert alert-secondary sub-container">
                         <div class="input-group">
-                            <input id="newTaskName" type="text" class="form-control" placeholder="Task Name..." maxlength="13">
+                            <input id="newTaskName" type="text" class="form-control" placeholder="Task Name..." maxlength="15">
                         </div>
                         <span id="taskNameErr" class="error-message"></span>
                         <div class="input-group">
@@ -87,7 +87,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="input-group">
-                        <input id="editTaskName" type="text" class="form-control" placeholder="Task Name..." maxlength="13">
+                        <input id="editTaskName" type="text" class="form-control" placeholder="Task Name..." maxlength="15">
                     </div>
                     <span id="taskNameErr" class="error-message"></span>
                     <div class="input-group">
@@ -118,8 +118,8 @@
                     <span id="taskStatusErr" class="error-message"></span>
                 </div>
                 <div class="modal-footer">
-                    <button id="saveTask" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="cancelEdit" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="saveTask" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>
@@ -135,11 +135,11 @@
                     <i class="material-icons">assignment_late</i>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete this task ? 
+                    Are you sure you want to delete this task ?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger">Delete</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>       
+                    <button id="confirmTaskDelete" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
