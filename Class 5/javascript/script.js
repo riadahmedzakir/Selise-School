@@ -135,7 +135,7 @@
            })
        }
 
-       //Form validator
+       //Form insert validator
        function formValidator() {
            var taskNameErr, taskDetailErr, taskDateErr, taskPriorityErr, taskStatusErr = "";
 
@@ -193,6 +193,70 @@
                document.getElementsByTagName("input")[3].value = ''
                document.getElementsByTagName("select")[0].value = 'Priority...';
                document.getElementsByTagName("select")[1].value = 'Status...';
+           }
+       }
+
+       //Form update validator
+       function updateValidator(taskNumber) {
+           var editTaskNameErr, editTaskDetailErr, editTaskDateErr, editTaskPriorityErr, editTaskStatusErr = "";
+           var taskList = loadJsonFromLocalStorage();
+
+           var editTaskName = document.getElementById("editTaskName").value;
+           var editTaskDetails = document.getElementById("editTaskDetails").value;
+           var editTaskDate = document.getElementById("editTaskDate").value;
+           var editTaskPriority = document.getElementById("editTaskPriority").value;
+           var editTaskStatus = document.getElementById("editTaskStatus").value;
+
+           if (editTaskName === null || editTaskName === "") {
+               editTaskNameErr = "*Please provide a task name";
+               document.getElementById("editTaskNameErr").innerHTML = editTaskNameErr;
+           } else {
+               editTaskNameErr = "";
+               document.getElementById("editTaskNameErr").innerHTML = editTaskNameErr;
+           }
+
+           if (editTaskDetails === null || editTaskDetails === "") {
+               editTaskDetailErr = "*Please provide details for your task";
+               document.getElementById("editTaskDetailErr").innerHTML = editTaskDetailErr;
+           } else {
+               editTaskDetailErr = "";
+               document.getElementById("editTaskDetailErr").innerHTML = editTaskDetailErr;
+           }
+
+           if (editTaskDate === null || moment(editTaskDate).isValid() === false) {
+               editTaskDateErr = "*Please provide a valid date";
+               document.getElementById("editTaskDateErr").innerHTML = editTaskDateErr;
+           } else {
+               editTaskDateErr = "";
+               document.getElementById("editTaskDateErr").innerHTML = editTaskDateErr;
+           }
+
+           if (editTaskPriority !== 'High' && editTaskPriority !== 'Medium' && editTaskPriority !== 'Low') {
+               editTaskPriorityErr = "*Please choose your priority";
+               document.getElementById("editTaskPriorityErr").innerHTML = editTaskPriorityErr;
+           } else {
+               editTaskPriorityErr = "";
+               document.getElementById("editTaskPriorityErr").innerHTML = editTaskPriorityErr;
+           }
+
+           if (editTaskStatus !== 'OnQueue' && editTaskStatus !== 'InProgress' && editTaskStatus !== 'Completed') {
+               editTaskStatusErr = "*Please select your task status";
+               document.getElementById("editTaskStatusErr").innerHTML = editTaskStatusErr;
+           } else {
+               editTaskStatusErr = "";
+               document.getElementById("editTaskStatusErr").innerHTML = editTaskStatusErr;
+           }
+
+           if (editTaskNameErr === "" && editTaskDetailErr === "" && editTaskDateErr === "" && editTaskPriorityErr === "" && editTaskStatusErr === "") {
+               taskList[taskNumber]["taskName"] = document.getElementById("editTaskName").value;;
+               taskList[taskNumber]["taskDetail"] = document.getElementById("editTaskDetails").value;
+               taskList[taskNumber]["taskDate"] = document.getElementById("editTaskDate").value;
+               taskList[taskNumber]["taskPriority"] = document.getElementById("editTaskPriority").value;
+               taskList[taskNumber]["taskStatus"] = document.getElementById("editTaskStatus").value;
+               setJsonOnLocalStorage(taskList);
+               document.getElementById("inputContainer").innerHTML = null;
+               taskList.forEach(toDoList);
+               $('#editModal').modal('hide');
            }
        }
 
@@ -350,14 +414,7 @@
 
            var saveTask = document.getElementById("saveTask");
            saveTask.addEventListener("click", function() {
-               taskList[taskNumber]["taskName"] = document.getElementById("editTaskName").value;;
-               taskList[taskNumber]["taskDetail"] = document.getElementById("editTaskDetails").value;
-               taskList[taskNumber]["taskDate"] = document.getElementById("editTaskDate").value;
-               taskList[taskNumber]["taskPriority"] = document.getElementById("editTaskPriority").value;
-               taskList[taskNumber]["taskStatus"] = document.getElementById("editTaskStatus").value;
-               setJsonOnLocalStorage(taskList);
-               document.getElementById("inputContainer").innerHTML = null;
-               taskList.forEach(toDoList);
+               updateValidator(taskNumber);
            });
        }
 
