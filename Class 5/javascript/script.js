@@ -50,15 +50,42 @@
        function searchTask(value) {
            var taskList = loadJsonFromLocalStorage();
            var filteredList = _.filter(taskList, function(task) {
-               return (task.taskName).toUpperCase() === value || (task.taskPriority).toUpperCase() === value || (task.taskDetail).toUpperCase().match(value);
+               return (task.taskName).toUpperCase().match(value) || (task.taskPriority).toUpperCase() === value || (task.taskDetail).toUpperCase().match(value);
            });
            return filteredList;
        }
 
-       function sortByDate() {
-            var taskList = loadJsonFromLocalStorage();
-            var filteredList = _.sortBy(taskList, "taskDate");
-            console.log(filteredList);
+       function sortByDate(sortType) {
+           if (sortType === "byDate") {
+               var taskList = loadJsonFromLocalStorage();
+               var filteredList = _.sortBy(taskList, "taskDate");
+               return filteredList;
+           } else if (sortType === "byPriority") {
+               var taskList = loadJsonFromLocalStorage();
+
+               var filteredList = _.filter(taskList, function(task) {
+                   return task.taskPriority === "Low";
+               });
+
+               var temp = _.filter(taskList, function(task) {
+                   return task.taskPriority === "Medium";
+               });
+
+               for (var x = 0; x < temp.length; x++) {
+                   filteredList.push(temp[x]);
+               }
+
+               var temp = _.filter(taskList, function(task) {
+                   return task.taskPriority === "High";
+               });
+
+               for (var x = 0; x < temp.length; x++) {
+                   filteredList.push(temp[x]);
+               }
+               return filteredList;
+           } else {
+               return loadJsonFromLocalStorage();
+           }
        }
 
        //Event Listner Initialize
@@ -70,6 +97,7 @@
            var filterAll = document.getElementById("filterAll");
            var filterToDo = document.getElementById("filterToDo");
            var filterComplete = document.getElementById("filterComplete");
+           var sortTask = document.getElementById("sortTask");
 
            addTask.addEventListener('click', function() {
                formValidator();
@@ -98,6 +126,12 @@
                    document.getElementById("inputContainer").innerHTML = null;
                    taskList.forEach(toDoList);
                }
+           })
+
+           sortTask.addEventListener("click", function(event) {
+               var taskList = sortByDate(this.value);
+               document.getElementById("inputContainer").innerHTML = null;
+               taskList.forEach(toDoList);
            })
        }
 

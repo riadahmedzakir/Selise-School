@@ -3,6 +3,8 @@
 <!-- To Do List app -->
 
 <head>
+    <title>Task Management</title>
+    <link rel="shortcut icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -70,14 +72,13 @@
                         <button id="filterAll" type="button" class="btn btn-outline-info btn-style col-md-3">All</button>
                         <button id="filterToDo" type="button" class="btn btn-outline-info btn-style col-md-3">To Do</button>
                         <button id="filterComplete" type="button" class="btn btn-outline-info btn-style col-md-3">Complete</button>
-                        <select class="custom-select transparent-input btn-style col-md-3" id="editTaskPriority">
+                        <select class="custom-select transparent-input btn-style col-md-3" id="sortTask">
                             <option selected>Sort by....</option>
-                            <option value="High">By date</option>
-                            <option value="Medium">By priority</option>
+                            <option value="byDate">By date</option>
+                            <option value="byPriority">By priority</option>
                         </select>
                     </div>
                     <div class="col-md-8 align-self-center">
-                        
                     </div>
                 </div>
                 <div id="inputContainer" class="row justify-content-center">
